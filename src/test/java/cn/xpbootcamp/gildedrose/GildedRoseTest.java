@@ -92,4 +92,16 @@ public class GildedRoseTest {
         Assert.assertEquals(9,value);
     }
 
+    @Test
+    public void given_a_backstage_pass_and_value_and_sellIn_between_0_and_5_when_given_today_then_output_value(){
+        GildedRose gildedRose = new GildedRose();
+        gildedRose.SellIn = 15;
+        gildedRose.goodType = BackstagePass;
+        gildedRose.Quality = 3;
+        int value = gildedRose.getCurrentValue(11);
+        Assert.assertEquals(20,value);
+        value = gildedRose.getCurrentValue(12);
+        Assert.assertEquals(23,value);
+    }
+
 }
