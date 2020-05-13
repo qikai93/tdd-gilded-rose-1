@@ -1,6 +1,11 @@
 package cn.xpbootcamp.gildedrose;
 
 public class GildedRose {
+    private final static int BackstagePass5 = 5;
+    private final static int  BackstagePass10 = 10;
+    private final static int ValueMin= 0;
+    private final static int ValueMax= 50;
+
     public int SellIn;
     public int Quality;
     public enum GoodType{
@@ -30,11 +35,11 @@ public class GildedRose {
             default:
                 result = getGoodCurrrentValue(curdays);
         }
-        if(result>=50){
-            result = 50;
+        if(result>=ValueMax){
+            result = ValueMax;
         }
-        else if(result<=0){
-            result = 0;
+        else if(result<=ValueMin){
+            result = ValueMin;
         }
         return result;
 
@@ -55,14 +60,14 @@ public class GildedRose {
         if(curdays > SellIn){
             result = 0;
         }
-        else if(SellIn - (curdays-1) > 10){
+        else if(SellIn - (curdays-1) > BackstagePass10){
             result = Quality + curdays - 1;
         }
-        else if(SellIn - (curdays-1) > 5){
-            result = Quality + SellIn-10-1 + 2*(curdays - (SellIn-10));
+        else if(SellIn - (curdays-1) > BackstagePass5){
+            result = Quality + SellIn-BackstagePass10-1 + 2*(curdays - (SellIn-BackstagePass10));
         }
         else{
-            result = Quality + 1*(SellIn-10-1) + 2*(10-5) + 3*(curdays - (SellIn-10) - 5);
+            result = Quality + 1*(SellIn-BackstagePass10-1) + 2*(BackstagePass10-BackstagePass5) + 3*(curdays - (SellIn-BackstagePass10) - BackstagePass5);
         }
         return result;
     }
