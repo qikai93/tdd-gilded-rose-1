@@ -13,6 +13,20 @@ public class GildedRoseTest {
         gildedRose.Quality = 3;
         int value = gildedRose.getCurrentValue(1);
         Assert.assertEquals(3,value);
+        value = gildedRose.getCurrentValue(2);
+        Assert.assertEquals(4,value);
+    }
+
+    @Test
+    public void given_a_good_and_value_and_sellIn_when_given_today_bigger_than_sellIn_then_output_value()
+    {
+        GildedRose gildedRose = new GildedRose();
+        gildedRose.SellIn = 10;
+        gildedRose.Quality = 3;
+        int value = gildedRose.getCurrentValue(11);
+        Assert.assertEquals(10,value);
+        value = gildedRose.getCurrentValue(12);
+        Assert.assertEquals(8,value);
     }
 
 }
