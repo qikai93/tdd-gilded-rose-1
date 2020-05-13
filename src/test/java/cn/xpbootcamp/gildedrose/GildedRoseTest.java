@@ -3,8 +3,7 @@ package cn.xpbootcamp.gildedrose;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static cn.xpbootcamp.gildedrose.GildedRose.GoodType.AgedBrie;
-import static cn.xpbootcamp.gildedrose.GildedRose.GoodType.Sulfuras;
+import static cn.xpbootcamp.gildedrose.GildedRose.GoodType.*;
 
 public class GildedRoseTest {
 
@@ -67,6 +66,18 @@ public class GildedRoseTest {
         Assert.assertEquals(9,value);
         value = gildedRose.getCurrentValue(7);
         Assert.assertEquals(11,value);
+    }
+
+    @Test
+    public void given_a_backstage_pass_and_value_and_sellIn_bigger_than_sellInwhen_given_today_then_output_value(){
+        GildedRose gildedRose = new GildedRose();
+        gildedRose.SellIn = 15;
+        gildedRose.goodType = BackstagePass;
+        gildedRose.Quality = 3;
+        int value = gildedRose.getCurrentValue(16);
+        Assert.assertEquals(0,value);
+        value = gildedRose.getCurrentValue(20);
+        Assert.assertEquals(0,value);
     }
 
 }
