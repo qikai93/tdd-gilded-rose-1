@@ -3,6 +3,7 @@ package cn.xpbootcamp.gildedrose;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static cn.xpbootcamp.gildedrose.GildedRose.GoodType.AgedBrie;
 import static cn.xpbootcamp.gildedrose.GildedRose.GoodType.Sulfuras;
 
 public class GildedRoseTest {
@@ -41,6 +42,31 @@ public class GildedRoseTest {
         Assert.assertEquals(3,value);
         value = gildedRose.getCurrentValue(12);
         Assert.assertEquals(3,value);
+    }
+
+    @Test
+    public void given_a_aged_brie_and_value_and_sellIn_less_than_sellIn_when_given_today_then_output_value()
+    {
+        GildedRose gildedRose = new GildedRose();
+        gildedRose.SellIn = 5;
+        gildedRose.goodType = AgedBrie;
+        gildedRose.Quality = 3;
+        int value = gildedRose.getCurrentValue(1);
+        Assert.assertEquals(3,value);
+        value = gildedRose.getCurrentValue(2);
+        Assert.assertEquals(4,value);
+    }
+
+    @Test
+    public void given_a_aged_brie_and_value_and_sellIn_bigger_than_sellIn_when_given_today_then_output_value(){
+        GildedRose gildedRose = new GildedRose();
+        gildedRose.SellIn = 5;
+        gildedRose.goodType = AgedBrie;
+        gildedRose.Quality = 3;
+        int value = gildedRose.getCurrentValue(6);
+        Assert.assertEquals(9,value);
+        value = gildedRose.getCurrentValue(7);
+        Assert.assertEquals(11,value);
     }
 
 }
