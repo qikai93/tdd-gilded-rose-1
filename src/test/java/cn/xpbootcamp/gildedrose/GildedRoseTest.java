@@ -104,4 +104,5 @@ public class GildedRoseTest {
         Assert.assertEquals(23,value);
     }
 
+
 }
